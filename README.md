@@ -1,14 +1,20 @@
 # Zepto Clone
 
-A modern Android grocery delivery application inspired by Zepto, built using Jetpack Compose with Clean Architecture and MVVM. This project showcases modern Android development practices, scalable architecture, and a smooth user experience using the latest Android development tools and libraries.
-
 ## Overview
 
-This project is developed to explore modern Android development using Jetpack Compose. It demonstrates best practices such as Clean Architecture, MVVM, Dependency Injection with Hilt, Firebase integration, and reactive UI development. The application recreates the core shopping experience of a grocery delivery platform, including product browsing, authentication, cart management, wishlist, and profile management.
+This project was developed during my first internship in Mobile Application Development at Elivence Skills. It is built using Kotlin and Android Jetpack while following the MVVM architecture and modern Android development practices.
 
 ## Features
 
-The application provides secure user authentication, product browsing, category-based shopping, product search, detailed product pages, shopping cart management, wishlist functionality, user profile management, location support, responsive layouts, smooth navigation, Material Design 3 components, and modern animations built entirely with Jetpack Compose.
+- Kotlin
+- Android Jetpack
+- MVVM Architecture
+- ViewModel
+- Navigation Component
+- Room Database
+- Retrofit
+- Coroutines
+- Material Design 3
 
 ## Tech Stack
 
@@ -16,9 +22,7 @@ The project is developed using Kotlin as the programming language and Jetpack Co
 
 ## Architecture
 
-This project follows **Clean Architecture** combined with the **MVVM (Model–View–ViewModel)** design pattern to ensure a scalable, maintainable, and testable codebase. The application is divided into three independent layers: **Presentation**, **Domain**, and **Data**, where each layer has a specific responsibility and communicates through well-defined interfaces.
-
-The **Presentation** layer is responsible for rendering the user interface using Jetpack Compose and managing UI state through ViewModels. The **Domain** layer contains the application's core business logic, use cases, and repository contracts, ensuring that business rules remain independent of frameworks and external dependencies. The **Data** layer manages all data-related operations, including Firebase services, local data sources, and repository implementations.
+This project follows **Clean Architecture** combined with the **MVVM (Model–View–ViewModel)** design pattern to ensure a scalable, maintainable, and testable codebase.
 
 ```text
                 Presentation Layer
@@ -68,12 +72,12 @@ app
 Clone the repository, open it in Android Studio, sync the Gradle files, configure Firebase if required, and run the application on an emulator or physical Android device.
 
 ```bash
-git clone https://github.com/your-username/Zepto-Clone.git
+git clone https://github.com/MohitMohit235
 ```
 
 ## Screenshots
 
-Application screenshots will be added after the development is completed.
+Application screenshots will be added after the development is completed. 
 
 ## Future Improvements
 
