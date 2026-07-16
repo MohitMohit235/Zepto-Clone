@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ECommerceAPPScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/app_color</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logosplash</item>
+        <item name="postSplashScreenTheme">@style/Theme.ECommerceAPP</item>
+    </style>
+
+
+    <style name="Theme.ECommerceAPP"
+        parent="">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+
+</resources>
