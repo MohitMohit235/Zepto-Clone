@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.ECommerceAPPScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/app_color</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logosplash</item>
-        <item name="postSplashScreenTheme">@style/Theme.ECommerceAPP</item>
+    <style name="Theme.Zepto.Main" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Zepto" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/purple</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.Zepto.Main</item>
     </style>
-
-
-    <style name="Theme.ECommerceAPP"
-        parent="">
-
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-
-    </style>
-
-
 </resources>

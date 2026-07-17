@@ -8,5 +8,5 @@ sealed class Screen(val route: String) {
     object AddressScreen : Screen(route = "address_screen")
     object AddressAddScreen : Screen(route = "addressAdd_screen")
     
-    object AddressEditScreen : Screen(route = "addressEdit_screen")
+    object SplashScreen : Screen(route = "splash_screen")
 }

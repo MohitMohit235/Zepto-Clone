@@ -3,9 +3,6 @@ package com.example.zepto.presentation.navigation
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -70,7 +67,7 @@ fun NaveRoot() {
         composable(
                 route = "addressAdd_screen/{id}",
                 arguments = listOf(
-                        navArgument("id"){
+                        navArgument("id") {
                             type = NavType.IntType
                         }
                 ),
@@ -84,8 +81,8 @@ fun NaveRoot() {
                             AnimatedContentTransitionScope.SlideDirection.Right
                     )
                 }
-        ) { backStackEntry->
-            val id = backStackEntry.arguments?.getInt("id") ?:-1
+        ) { backStackEntry ->
+            val id = backStackEntry.arguments?.getInt("id") ?: -1
             AddressAddScreen(
                     navController = navController,
                     addressId = id,
@@ -99,9 +96,7 @@ fun NaveRoot() {
                             popUpTo(Screen.AddressScreen.route) { inclusive = true }
                         }
                     },
-                    
                     )
         }
-        
     }
 }
