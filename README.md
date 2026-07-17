@@ -77,7 +77,7 @@ git clone https://github.com/MohitMohit235
 
 ## Screenshots
 
-![Application Screenshot](screenshots/screenshot.png) 
+![Application Screenshot](screenshots/screenshort.png) 
 
 ## Future Improvements
 
