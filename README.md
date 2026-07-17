@@ -77,7 +77,7 @@ git clone https://github.com/MohitMohit235
 
 ## Screenshots
 
-Application screenshots will be added after the development is completed. 
+![Application Screenshot](screenshots/screenshot.png) 
 
 ## Future Improvements
 
