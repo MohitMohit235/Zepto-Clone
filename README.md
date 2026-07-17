@@ -4,6 +4,11 @@
 
 This project was developed during my first internship in Mobile Application Development at Elivence Skills. It is built using Kotlin and Android Jetpack while following the MVVM architecture and modern Android development practices.
 
+
+## Screenshots
+
+![Application Screenshot](screenshots/screenshort.png) 
+
 ## Features
 
 - Kotlin
@@ -74,10 +79,6 @@ Clone the repository, open it in Android Studio, sync the Gradle files, configur
 ```bash
 git clone https://github.com/MohitMohit235
 ```
-
-## Screenshots
-
-![Application Screenshot](screenshots/screenshort.png) 
 
 ## Future Improvements
 
