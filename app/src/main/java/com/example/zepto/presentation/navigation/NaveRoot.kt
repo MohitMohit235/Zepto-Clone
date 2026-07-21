@@ -13,6 +13,7 @@ import com.example.zepto.presentation.drawer.address.addressScreens.AddressAddSc
 import com.example.zepto.presentation.drawer.address.addressScreens.AddressScreen
 import com.example.zepto.presentation.onbordingscreen.CheckOutScreen
 import com.example.zepto.presentation.onbordingscreen.MainZeptoScreen
+import com.example.zepto.presentation.productdetail.ProductDetailScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -27,6 +28,11 @@ fun NaveRoot() {
                     navController,
                     OnCartClick = {
                         navController.navigate(Screen.CartScreen.route) {
+                            popUpTo(Screen.MainScreen.route) { inclusive = true }
+                        }
+                    },
+                    onAddress = {
+                        navController.navigate(Screen.AddressScreen.route) {
                             popUpTo(Screen.MainScreen.route) { inclusive = true }
                         }
                     }
@@ -57,7 +63,7 @@ fun NaveRoot() {
                         }
                     },
                     OnAddClick = {
-                        navController.navigate("addressAdd_screen/-1") {
+                        navController.navigate(Screen.AddressAddScreen.createRoute(-1)) {
                             popUpTo(Screen.AddressScreen.route) { inclusive = true }
                         }
                     },
@@ -65,7 +71,7 @@ fun NaveRoot() {
         }
         
         composable(
-                route = "addressAdd_screen/{id}",
+                route = Screen.AddressAddScreen.route,
                 arguments = listOf(
                         navArgument("id") {
                             type = NavType.IntType
@@ -96,7 +102,28 @@ fun NaveRoot() {
                             popUpTo(Screen.AddressScreen.route) { inclusive = true }
                         }
                     },
-                    )
+            )
+        }
+        
+        
+        composable(
+                route = Screen.ProductDetailScreen.route,
+                arguments = listOf(
+                        navArgument("productId") {
+                            type = NavType.IntType
+                        }
+                )
+        ) { backStackEntry ->
+            val productId = backStackEntry.arguments?.getInt("productId") ?: 0
+            ProductDetailScreen(
+                    navController = navController,
+                    productId = productId,
+                    OnBackClick = {
+                        navController.navigate(Screen.MainScreen.route){
+                            popUpTo(Screen.ProductDetailScreen.route){inclusive = true}
+                        }
+                    }
+            )
         }
     }
 }

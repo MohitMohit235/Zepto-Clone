@@ -1,10 +1,11 @@
-package com.example.zepto.di
+package com.example.zepto.di.addressdao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.zepto.di.Address
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -26,4 +27,5 @@ interface AddressDao {
     
     @Query("SELECT*FROM address WHERE addressType = 'Current Location'LIMIT 1")
     suspend fun getCurrentLocation(): Address?
+    
 }

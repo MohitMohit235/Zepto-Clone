@@ -130,7 +130,7 @@ fun AddressScreen(
                                 navController = navController,
                                 address = items,
                                 onUpdateClick = {
-                                    navController.navigate(Screen.AddressAddScreen.route + "/${items.id}")
+                                    navController.navigate("addressAdd_screen/${items.id}")
                                 },
                                 onDeleteClick = {
                                     viewModel.deleteAddress(items)

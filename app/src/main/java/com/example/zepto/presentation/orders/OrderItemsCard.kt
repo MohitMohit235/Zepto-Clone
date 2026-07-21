@@ -58,9 +58,6 @@ fun OrderItemList(order: orderlist) {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                
-                Text(order.time, fontFamily = font)
-                
                 Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween

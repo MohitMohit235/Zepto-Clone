@@ -1,5 +1,6 @@
-package com.example.zepto.domain.repository
+package com.example.zepto.domain.repository.roomdatabaserepo
 
+import com.example.zepto.data.model.Product
 import com.example.zepto.di.Address
 import kotlinx.coroutines.flow.Flow
 
@@ -15,4 +16,7 @@ interface repository {
     fun getAddressById(id: Int): Flow<Address?>
     
     suspend fun getCurrentLocation(address: Address)
+    
+    
+    
 }
