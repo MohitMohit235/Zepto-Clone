@@ -16,25 +16,21 @@ class ProductViewModel @Inject constructor(
         private val productRoomViewModel: ProductRoomRepositoryImpl,
 ) : ViewModel() {
     
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing = _isRefreshing.asStateFlow()
     private val _Uistate = MutableStateFlow(ProductUIState())
     val uistate = _Uistate.asStateFlow()
     
     init {
         getGroceryProducts()
+        refreshProducts()
     }
     
     fun getGroceryProducts() {
         viewModelScope.launch {
             _Uistate.value = ProductUIState(isLoading = true)
             
-            try {
-                productRoomViewModel.refreshProducts()
-            } catch (e: Exception) {
-            
-            }
-            
             productRoomViewModel.getProducts().collect { products ->
-                
                 _Uistate.value = ProductUIState(
                         isLoading = false,
                         success = GroceryProducts(
@@ -45,4 +41,19 @@ class ProductViewModel @Inject constructor(
             }
         }
     }
+    
+    fun refreshProducts() {
+        viewModelScope.launch {
+            _isRefreshing.value = true
+            
+            try {
+                productRoomViewModel.refreshProducts()
+            } catch (e: Exception) {
+                // Handle error
+            }
+            
+            _isRefreshing.value = false
+        }
+    }
+    
 }

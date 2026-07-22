@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -61,7 +62,7 @@ fun CategoryTabBar(
                     AsyncImage(
                             model = category.imageUrl,
                             contentDescription = category.name,
-                            modifier = Modifier.size(40.dp),
+                            modifier = Modifier.size(40.dp).background(color = Color.White , shape = CircleShape).padding(6.dp),
                             contentScale = ContentScale.Fit
                     )
                     Text(

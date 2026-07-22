@@ -25,7 +25,6 @@ fun NaveRoot() {
     ) {
         composable(route = Screen.MainScreen.route) {
             MainZeptoScreen(
-                    navController,
                     OnCartClick = {
                         navController.navigate(Screen.CartScreen.route) {
                             popUpTo(Screen.MainScreen.route) { inclusive = true }
@@ -35,7 +34,8 @@ fun NaveRoot() {
                         navController.navigate(Screen.AddressScreen.route) {
                             popUpTo(Screen.MainScreen.route) { inclusive = true }
                         }
-                    }
+                    },
+                    navController = navController
             )
         }
         composable(route = Screen.CheckOutScreen.route) {

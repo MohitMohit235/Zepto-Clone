@@ -27,9 +27,6 @@ class AddressViewModel @Inject constructor(
                 _isLoading.value = false
             }
     
-    val getallAddress: Flow<List<Address>> =
-        repository.getAllAddresses()
-    
     fun addAddress(address: Address) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addAddress(address = address)
