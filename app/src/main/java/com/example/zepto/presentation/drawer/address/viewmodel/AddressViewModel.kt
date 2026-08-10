@@ -3,7 +3,7 @@ package com.example.zepto.presentation.drawer.address.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.zepto.di.Address
+import com.example.zepto.data.model.Address
 import com.example.zepto.data.repositoryimpl.roomdatabaserepoimpl.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

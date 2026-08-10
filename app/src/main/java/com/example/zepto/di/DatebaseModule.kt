@@ -4,6 +4,7 @@ package com.example.zepto.di
 import android.content.Context
 import androidx.room.Room
 import com.example.zepto.di.addressdao.AddressDao
+import com.example.zepto.di.cartdao.CartDao
 import com.example.zepto.di.productdao.ProductDao
 import dagger.Module
 import dagger.Provides
@@ -20,26 +21,36 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(
             @ApplicationContext context: Context,
-    ): addressDatabase {
+    ): database {
         return Room.databaseBuilder(
                 context,
-                addressDatabase::class.java,
+                database::class.java,
                 "address_database"
-        ).build()
+        )
+                .fallbackToDestructiveMigration()
+                .build()
     }
     
     @Provides
     fun provideAddressDao(
-            database: addressDatabase
+            database: database
     ): AddressDao {
         return database.addressDao()
     }
     
     @Provides
     fun provideProductDao(
-            database: addressDatabase
+            database: database
     ): ProductDao {
         return database.productDao()
     }
+    
+    @Provides
+    fun provideCartDao(
+            database: database
+    ): CartDao{
+        return database.cartDao()
+    }
+    
     
 }

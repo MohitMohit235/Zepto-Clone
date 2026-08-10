@@ -1,4 +1,4 @@
-package com.example.zepto.di
+package com.example.zepto.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

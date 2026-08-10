@@ -33,8 +33,8 @@ fun CategoryCard(
     
     ElevatedCard(
             onClick = {},
-            modifier = Modifier.height(240.dp)
-                    .width(300.dp),
+            modifier = Modifier.height(200.dp)
+                    .width(200.dp),
             colors = CardDefaults.elevatedCardColors(
                 containerColor = Color(0xFFF9F9F9)
             )
@@ -48,12 +48,12 @@ fun CategoryCard(
                     painter = image,
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(170.dp)
+                    modifier = Modifier.size(110.dp)
             )
             Text(
                     text = name,
                     fontFamily = font,
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold
             )

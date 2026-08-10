@@ -1,0 +1,57 @@
+package com.example.zepto.presentation.orders
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun OrderTrackingProgress(
+        currentStep: Int
+) {
+    
+    Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+    ) {
+        
+        repeat(5) { index ->
+            
+            Box(
+                    modifier = Modifier
+                            .size(16.dp)
+                            .background(
+                                    color =
+                                        if (index < currentStep)
+                                            Color(0xFF17923D)
+                                        else
+                                            Color.LightGray,
+                                    shape = CircleShape
+                            )
+            )
+            
+            if (index != 4) {
+                
+                Box(
+                        modifier = Modifier
+                                .weight(1f)
+                                .height(3.dp)
+                                .background(
+                                        if (index < currentStep - 1)
+                                            Color(0xFF17923D)
+                                        else
+                                            Color.LightGray
+                                )
+                )
+            }
+        }
+    }
+}

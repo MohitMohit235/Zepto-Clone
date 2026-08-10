@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.zepto.di.Address
+import com.example.zepto.data.model.Address
 import kotlinx.coroutines.flow.Flow
 
 @Dao

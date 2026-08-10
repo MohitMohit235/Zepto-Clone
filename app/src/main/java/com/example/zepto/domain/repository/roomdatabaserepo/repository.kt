@@ -1,7 +1,7 @@
 package com.example.zepto.domain.repository.roomdatabaserepo
 
 import com.example.zepto.data.model.Product
-import com.example.zepto.di.Address
+import com.example.zepto.data.model.Address
 import kotlinx.coroutines.flow.Flow
 
 interface repository {

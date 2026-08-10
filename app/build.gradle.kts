@@ -72,6 +72,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-storage")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
+    implementation("com.google.firebase:firebase-messaging")
     
     //Room
     implementation("androidx.room:room-runtime:2.8.4")
@@ -95,5 +96,7 @@ dependencies {
     
     //Coil
     implementation("io.coil-kt:coil-compose:2.7.0")
+    
+    
     
 }

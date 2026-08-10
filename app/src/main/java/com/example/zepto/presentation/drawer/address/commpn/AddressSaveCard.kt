@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.zepto.R
-import com.example.zepto.di.Address
+import com.example.zepto.data.model.Address
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

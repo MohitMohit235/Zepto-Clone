@@ -1,6 +1,7 @@
 package com.example.zepto.presentation.home.componet
 
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,8 +13,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Search
@@ -33,6 +38,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
@@ -50,15 +57,14 @@ import com.example.zepto.presentation.product.ProductCard
 fun HomeItems(
         navController: NavController,
         viewModel: ProductViewModel = hiltViewModel(),
+        onAddress: () -> Unit,
 ) {
     val font = FontFamily(Font(R.font.lexendexa_regular))
     val state by viewModel.uistate.collectAsState()
-    var selectedCategory by remember { mutableStateOf(categoryList[0]) }
     val isRefreshing by viewModel.isRefreshing.collectAsState()
     val pullToRefreshState = rememberPullToRefreshState()
     
     when {
-        
         state.isLoading -> {
             Box(
                     modifier = Modifier.fillMaxSize(),
@@ -75,45 +81,9 @@ fun HomeItems(
         state.success != null -> {
             
             Column(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                
-                Column(
-                        modifier = Modifier.background(color = Color(0xFFD5BEFC))
-                ) {
-                    Box(
-                            Modifier
-                                    .fillMaxWidth(fraction = 0.8f)
-                                    .height(70.dp)
-                                    .padding(14.dp)
-                                    .clip(shape = MaterialTheme.shapes.medium)
-                                    .background(Color.White),
-                            contentAlignment = Alignment.CenterStart
-                    ) {
-                        Row(
-                                modifier = Modifier.padding(start = 16.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(10.dp)
-                        ) {
-                            Icon(
-                                    imageVector = Icons.Outlined.Search,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(20.dp)
-                            )
-                            Text(
-                                    text = "Search for your accessories",
-                                    fontSize = 12.sp,
-                                    fontFamily = font
-                            )
-                        }
-                    }
-                    
-                    CategoryTabBar(
-                            categories = categoryList,
-                            selectedCategory = selectedCategory,
-                            onCategorySelected = { selectedCategory = it }
-                    )
-                }
                 
                 PullToRefreshBox(
                         state = pullToRefreshState,
@@ -122,31 +92,11 @@ fun HomeItems(
                             viewModel.refreshProducts()
                         }
                 ) {
-                    
-                    LazyVerticalStaggeredGrid(
-                            columns = StaggeredGridCells.Fixed(2),
-                            modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(horizontal = 20.dp, vertical = 10.dp)
-                    ) {
-                        items(state.success!!.products) { items ->
-                            ProductCard(
-                                    productName = items.title,
-                                    productImage = items.thumbnail,
-                                    productCategory = items.category,
-                                    productPrice = items.price.toString(),
-                                    productRating = items.rating,
-                                    onProductScreen = {
-                                        navController.navigate(
-                                                Screen.ProductDetailScreen.createRoute(
-                                                        items.id
-                                                )
-                                        )
-                                        Log.d("TAB", items.id.toString())
-                                    },
-                            )
-                        }
-                    }
+                    ProductList(
+                            navController = navController,
+                            onAddress = {onAddress()}
+                            
+                    )
                 }
             }
         }

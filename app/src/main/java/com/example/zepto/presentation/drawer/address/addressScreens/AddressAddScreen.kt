@@ -46,7 +46,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.zepto.R
-import com.example.zepto.di.Address
+import com.example.zepto.data.model.Address
 import com.example.zepto.presentation.drawer.address.commpn.LocationSelectorChip
 import com.example.zepto.presentation.drawer.address.viewmodel.AddressViewModel
 

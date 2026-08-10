@@ -1,5 +1,6 @@
 package com.example.zepto.presentation.home.componet
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.outlined.Search
@@ -25,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -32,13 +35,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.zepto.R
-import com.example.zepto.di.Address
+import com.example.zepto.data.model.Address
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTopBar(
-        address: Address,
         navController: NavController,
         onAddressClick: () -> Unit,
         OnClickOpen: () -> Unit,
@@ -61,8 +64,8 @@ fun HomeTopBar(
             Row(
                     modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 20.dp, start = 10.dp)
-                            .padding(horizontal = 16.dp),
+                            .padding(top = 20.dp, start = 5.dp)
+                            .padding(horizontal = 15.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
             ) {
@@ -98,12 +101,12 @@ fun HomeTopBar(
                     ) {
                         Text(
                                 modifier = Modifier.width(200.dp),
-                                text = "${address.addressLine1}, ${address.addressLine2}, ${address.city}, ${address.state}, ${address.country} - ${address.pincode}",
+                                text = "Pg - Shreenath pg HPPXT, hinjewadi, pune, Maharashtra",
                                 color = Color.Black,
                                 fontFamily = font,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
-                                fontSize = 10.sp
+                                fontSize = 11.sp
                         )
                         Icon(
                                 imageVector = Icons.Default.KeyboardArrowDown,
@@ -112,7 +115,7 @@ fun HomeTopBar(
                                 modifier = Modifier
                                         .size(20.dp)
                                         .graphicsLayer(alpha = 0.99f)
-                        
+
                         )
                     }
                 }
@@ -126,6 +129,14 @@ fun HomeTopBar(
                 
                 )
             }
+            
+            Image(
+                    painter = painterResource(R.drawable.imagessss),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxWidth().height(80.dp),
+                    contentScale = ContentScale.Fit
+            )
+            
         }
     }
 }

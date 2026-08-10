@@ -9,65 +9,84 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.zepto.R
 import com.example.zepto.data.model.orderlist
 
+@OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun OrderItems(
-        navController: NavController
+        navController: NavController,
+        onBackMainClick: () -> Unit,
 ) {
     
+    val font = FontFamily(Font(R.font.mainfonts))
+    
     val orderList = listOf(
-            orderlist(
-                    orderId = "#00001",
-                    itemsName = "Milk, Bread, Eggs",
-                    totalAmount = "320",
-                    tracking = "Delivered"
-            ),
-            orderlist(
-                    orderId = "#00002",
-                    itemsName = "Rice, Sugar",
-                    totalAmount = "450",
-                    tracking = "Confirmed"
-            ),
-            
+           
             orderlist(
                     orderId = "#00003",
                     itemsName = "Cooking Oil, Flour",
                     totalAmount = "520",
                     tracking = "Packing"
-            ),
-            
-            orderlist(
-                    orderId = "#00004",
-                    itemsName = "Apple, Banana, Orange",
-                    totalAmount = "380",
-                    tracking = "Out for Delivery"
-            ),
-            
-            orderlist(
-                    orderId = "#00005",
-                    itemsName = "Vegetables, Fruits",
-                    totalAmount = "600",
-                    tracking = "Delivered"
             )
     )
     
-    LazyColumn(
-            modifier = Modifier
-                    .fillMaxSize()
-                    .padding(12.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        items(orderList) { orders ->
-            OrderItemList(order = orders)
+    Scaffold(
+            
+            topBar = {
+                TopAppBar(
+                        navigationIcon = {
+                            IconButton(
+                                    onClick = {
+                                        onBackMainClick()
+                                    }
+                            ) {
+                                Icon(
+                                        imageVector = Icons.Outlined.ArrowBack,
+                                        contentDescription = null,
+                                        tint = Color.Black
+                                )
+                            }
+                        },
+                        title = {
+                            Text(
+                                    text = "My Order",
+                                    fontFamily = font
+                            )
+                        }
+                )
+            },
+    ) { paddingValues ->
+        
+        LazyColumn(
+                modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues)
+                        .padding(12.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            items(orderList) { orders ->
+            
+            }
         }
     }
 }
