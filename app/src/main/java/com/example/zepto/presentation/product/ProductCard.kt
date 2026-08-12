@@ -54,7 +54,7 @@ fun ProductCard(
     
     Card(
             modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(fraction = 0.6f)
                     .height(255.dp)
                     .clickable { onProductScreen() },
             shape = RoundedCornerShape(12.dp),

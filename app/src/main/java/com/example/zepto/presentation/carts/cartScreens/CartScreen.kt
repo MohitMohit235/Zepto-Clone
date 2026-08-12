@@ -191,7 +191,7 @@ fun CartScreen(
                             .padding(top = 10.dp)
                             .padding(horizontal = 10.dp)
                             .clip(shape = MaterialTheme.shapes.small)
-                            .background(color = Color(0xFFEEEEFC))
+                            .background(color = Color.White)
             
             
             ) {
@@ -200,7 +200,7 @@ fun CartScreen(
                     
                     Card(
                             colors = CardDefaults.cardColors(
-                                    containerColor = Color.Transparent
+                                    containerColor = Color.White
                             ),
                             modifier = Modifier
                                     .fillMaxWidth()
@@ -220,7 +220,7 @@ fun CartScreen(
                             AsyncImage(
                                     model = item.image,
                                     contentDescription = null,
-                                    modifier = Modifier.size(70.dp)
+                                    modifier = Modifier.size(50.dp)
                             )
                             
                             Spacer(modifier = Modifier.width(12.dp))
@@ -238,45 +238,58 @@ fun CartScreen(
                                 Spacer(modifier = Modifier.height(5.dp))
                                 
                                 Text(
-                                        text = "₹${item.price}",
-                                        color = Color(0xFF17923D),
-                                        fontFamily = font
+                                        text = "${item.quantity} Pack",
+                                        color = Color.DarkGray,
+                                        fontFamily = font,
+                                        fontSize = 10.sp
                                 )
                                 
                             }
-                            
-                            Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier
-                                            .clip(shape = RoundedCornerShape(6.dp))
-                                            .background(color = Color(0xFFF85B4F))
+                            Column(
+                                    modifier = Modifier.weight(1f),
+                                    horizontalAlignment = Alignment.End
                             ) {
-                                TextButton(
-                                        onClick = {
-                                            cartViewModel.decreaseCartItemQuantity(item)
-                                        },
-                                        modifier = Modifier.size(40.dp),
-                                        contentPadding = PaddingValues(0.dp)
+                                Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        modifier = Modifier
+                                                .clip(shape = RoundedCornerShape(6.dp))
+                                                .background(color = Color(0xFFF85B4F))
                                 ) {
-                                    Text("-", color = Color.White)
+                                    TextButton(
+                                            onClick = {
+                                                cartViewModel.decreaseCartItemQuantity(item)
+                                            },
+                                            modifier = Modifier.size(20.dp),
+                                            contentPadding = PaddingValues(0.dp)
+                                    ) {
+                                        Text("-", color = Color.White)
+                                    }
+                                    
+                                    Text(
+                                            text = "${item.quantity}",
+                                            modifier = Modifier.padding(horizontal = 12.dp),
+                                            fontFamily = font,
+                                            color = Color.White
+                                    )
+                                    
+                                    TextButton(
+                                            onClick = {
+                                                cartViewModel.increaseCartItemQuantity(item)
+                                            },
+                                            modifier = Modifier.size(20.dp),
+                                            contentPadding = PaddingValues(0.dp)
+                                    ) {
+                                        Text("+", color = Color.White)
+                                    }
                                 }
+                                Spacer(modifier = Modifier.height(5.dp))
                                 
                                 Text(
-                                        text = "${item.quantity}",
-                                        modifier = Modifier.padding(horizontal = 12.dp),
+                                        text = "₹${item.price}",
+                                        color = Color(0xFF17913D),
                                         fontFamily = font,
-                                        color =  Color.White
+                                        fontSize = 14.sp
                                 )
-                                
-                                TextButton(
-                                        onClick = {
-                                            cartViewModel.increaseCartItemQuantity(item)
-                                        },
-                                        modifier = Modifier.size(40.dp),
-                                        contentPadding = PaddingValues(0.dp)
-                                ) {
-                                    Text("+", color = Color.White)
-                                }
                             }
                         }
                     }

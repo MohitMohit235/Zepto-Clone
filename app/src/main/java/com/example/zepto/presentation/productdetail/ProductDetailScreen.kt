@@ -129,54 +129,58 @@ fun ProductDetailScreen(
                 verticalArrangement = Arrangement.Top
         ) {
             item {
+                Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Box(
+                            modifier = Modifier
+                                    .clip(shape = CircleShape)
+                                    .size(40.dp)
+                                    .background(color = Color(0x4D313131)),
+                            contentAlignment = Alignment.Center
+                    ) {
+                        IconButton(
+                                onClick = { OnBackClick() }
+                        ) {
+                            Icon(
+                                    imageVector = Icons.Filled.ArrowBack,
+                                    contentDescription = null,
+                                    tint = Color.White,
+                                    modifier = Modifier.padding(6.dp)
+                            )
+                        }
+                    }
+                    Box(
+                            modifier = Modifier
+                                    .clip(shape = CircleShape)
+                                    .size(40.dp)
+                                    .background(color = Color(0x4D313131)),
+                            contentAlignment = Alignment.Center
+                    ) {
+                        IconButton(
+                                onClick = { OnBackClick() }
+                        ) {
+                            Icon(
+                                    imageVector = Icons.Filled.FavoriteBorder,
+                                    contentDescription = null,
+                                    tint = Color.White,
+                                    modifier = Modifier.padding(6.dp)
+                            )
+                        }
+                    }
+                }
+            }
+            item {
                 product?.let {
                     Box(){
-                        Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Box(
-                                    modifier = Modifier
-                                            .clip(shape = CircleShape)
-                                            .size(30.dp)
-                                            .background(color = Color(0x4D313131)),
-                                    contentAlignment = Alignment.Center
-                            ) {
-                                IconButton(
-                                        onClick = { OnBackClick() }
-                                ) {
-                                    Icon(
-                                            imageVector = Icons.Filled.ArrowBack,
-                                            contentDescription = null,
-                                            tint = Color.White
-                                    )
-                                }
-                            }
-                            Box(
-                                    modifier = Modifier
-                                            .clip(shape = CircleShape)
-                                            .size(30.dp)
-                                            .background(color = Color(0x4D313131)),
-                                    contentAlignment = Alignment.Center
-                            ) {
-                                IconButton(
-                                        onClick = { OnBackClick() }
-                                ) {
-                                    Icon(
-                                            imageVector = Icons.Filled.FavoriteBorder,
-                                            contentDescription = null,
-                                            tint = Color.White
-                                    )
-                                }
-                            }
-                        }
                         AsyncImage(
                                 model = it.image,
                                 contentDescription = null,
                                 modifier = Modifier
                                         .fillMaxWidth()
-                                        .height(300.dp),
+                                        .height(350.dp),
                                 contentScale = ContentScale.Fit
                         )
                     }
