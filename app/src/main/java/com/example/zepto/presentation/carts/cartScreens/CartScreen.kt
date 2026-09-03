@@ -1,9 +1,7 @@
 package com.example.zepto.presentation.carts.cartScreens
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,7 +18,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
-import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -36,7 +33,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -51,15 +47,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.zepto.R
-import com.example.zepto.data.model.productitems
 import com.example.zepto.presentation.carts.cartviewmodel.CartViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.example.zepto.presentation.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CartScreen(
         navController: NavController,
         onBackMainClick: () -> Unit,
+        onPaymentSCreenClick:()-> Unit,
         cartViewModel: CartViewModel = hiltViewModel(),
 ) {
     
@@ -97,7 +93,7 @@ fun CartScreen(
             bottomBar = {
                 Button(
                         onClick = {
-                            navController.navigate("payment/${totalAmount.toInt()}")
+                            onPaymentSCreenClick()
                         },
                         enabled = cartItems.isNotEmpty(),
                         modifier = Modifier

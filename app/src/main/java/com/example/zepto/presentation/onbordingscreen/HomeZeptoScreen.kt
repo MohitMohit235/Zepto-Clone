@@ -96,6 +96,11 @@ fun MainZeptoScreen(
                             bottomNavController.navigate("home") {
                                 popUpTo("cart") { inclusive = true }
                             }
+                        },
+                        onPaymentSCreenClick = {
+                            navController.navigate(Screen.PaymentScreen.route){
+                                popUpTo(Screen.CartScreen.route){inclusive = true}
+                            }
                         }
                 )
             }

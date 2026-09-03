@@ -13,6 +13,7 @@ import com.example.zepto.presentation.drawer.address.addressScreens.AddressAddSc
 import com.example.zepto.presentation.drawer.address.addressScreens.AddressScreen
 import com.example.zepto.presentation.onbordingscreen.CheckOutScreen
 import com.example.zepto.presentation.onbordingscreen.MainZeptoScreen
+import com.example.zepto.presentation.payment.PaymentScreen
 import com.example.zepto.presentation.productdetail.ProductDetailScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -119,11 +120,21 @@ fun NaveRoot() {
                     navController = navController,
                     productId = productId,
                     OnBackClick = {
-                        navController.navigate(Screen.MainScreen.route){
-                            popUpTo(Screen.ProductDetailScreen.route){inclusive = true}
+                        navController.navigate(Screen.MainScreen.route) {
+                            popUpTo(Screen.ProductDetailScreen.route) { inclusive = true }
                         }
                     }
             )
         }
+        
+        composable(route = Screen.PaymentScreen.route) {
+            PaymentScreen(
+                    navController,
+                    OnBackCartClick = {
+                       navController.popBackStack()
+                    }
+            )
+        }
+        
     }
 }
